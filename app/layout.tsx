@@ -1,21 +1,41 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { AppProviders } from "@/components/providers/AppProviders";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+// Self-hosted rather than next/font/google: the Google Fonts fetch happens at
+// build time and is unreliable in CI (Netlify's build network returned 404s for
+// stale gstatic URLs, failing the build). These are the same latin-subset
+// variable files Google serves, vendored into the repo.
+const cormorant = localFont({
   variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
   display: "swap",
+  adjustFontFallback: "Times New Roman",
+  src: [
+    {
+      path: "./fonts/CormorantGaramond-Variable-latin.woff2",
+      weight: "300 700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/CormorantGaramond-Variable-Italic-latin.woff2",
+      weight: "300 700",
+      style: "italic",
+    },
+  ],
 });
 
-const manrope = Manrope({
+const manrope = localFont({
   variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
+  adjustFontFallback: "Arial",
+  src: [
+    {
+      path: "./fonts/Manrope-Variable-latin.woff2",
+      weight: "200 800",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
