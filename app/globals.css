@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --color-ivory: 40 33% 97%;
+  --color-cream: 38 30% 94%;
+  --color-charcoal: 220 10% 12%;
+  --color-charcoal-soft: 220 8% 30%;
+  --color-gold: 38 55% 55%;
+  --color-gold-soft: 40 45% 72%;
+  --color-gold-deep: 35 60% 40%;
+  --color-line: 30 15% 87%;
+}
+
+@theme inline {
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-manrope);
+
+  --color-ivory: hsl(var(--color-ivory));
+  --color-cream: hsl(var(--color-cream));
+  --color-charcoal: hsl(var(--color-charcoal));
+  --color-charcoal-soft: hsl(var(--color-charcoal-soft));
+  --color-gold: hsl(var(--color-gold));
+  --color-gold-soft: hsl(var(--color-gold-soft));
+  --color-gold-deep: hsl(var(--color-gold-deep));
+  --color-line: hsl(var(--color-line));
+
+  --shadow-soft: 0 2px 8px -2px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-elevated: 0 12px 32px -8px rgb(0 0 0 / 0.12), 0 4px 12px -4px rgb(0 0 0 / 0.08);
+  --shadow-gold: 0 8px 24px -6px hsl(var(--color-gold) / 0.35);
+
+  --breakpoint-xs: 30rem;
+
+  --container-container: 90rem;
+  --container-narrow: 70rem;
+
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-shimmer: shimmer 1.8s ease-in-out infinite;
+  --animate-accordion-down: accordion-down 0.25s var(--ease-luxury);
+  --animate-accordion-up: accordion-up 0.25s var(--ease-luxury);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: hsl(var(--color-gold) / 0.25);
+  color: var(--color-charcoal);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--color-gold-soft)) transparent;
+}
